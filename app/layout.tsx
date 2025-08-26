@@ -11,19 +11,19 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Google Analytics (GA4) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-09J7X11MV1"
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-09J7X11MV1');
-          `}
-        </Script>
+        {/* Google tag (gtag.js) */}
+<Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-09J7X11MV1"
+  strategy="afterInteractive"
+/>
+<Script id="gtag-init" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-09J7X11MV1');
+  `}
+</Script>
       </head>
       <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
