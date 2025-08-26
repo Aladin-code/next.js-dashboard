@@ -16,14 +16,16 @@ export default function RootLayout({
   src="https://www.googletagmanager.com/gtag/js?id=G-09J7X11MV1"
   strategy="afterInteractive"
 />
-<Script id="gtag-init" strategy="afterInteractive">
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){window.dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-09J7X11MV1');
-  `}
-</Script>
+<Script id="ga-debug" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            const originalPush = window.dataLayer.push;
+            window.dataLayer.push = function() {
+              console.log("GA4 event fired:", arguments);
+              return originalPush.apply(this, arguments);
+            };
+          `}
+        </Script>
       </head>
       <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
